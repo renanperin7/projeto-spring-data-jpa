@@ -1,0 +1,33 @@
+------------------------------------------------------------------------------------------------------------------------
+
+Parar container
+docker stop [nome-container]
+
+------------------------------------------------------------------------------------------------------------------------
+
+Remover container
+docker container rm [nome-container]
+
+------------------------------------------------------------------------------------------------------------------------
+
+Containers sem network
+
+docker run --name librarydb -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library postgres:16.3
+
+docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin dpage/pgadmin4
+
+------------------------------------------------------------------------------------------------------------------------
+
+Containers com network ligando entre si
+
+docker run --name librarydb -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library --network library-network postgres:16.3
+
+docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin --network library-network dpage/pgadmin4
+
+------------------------------------------------------------------------------------------------------------------------
+
+Containers com network ligando entre si para rodar em background -> -d
+
+docker run --name librarydb -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=library --network library-network -d postgres:16.3
+
+docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin --network library-network -d dpage/pgadmin4
