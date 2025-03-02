@@ -3,10 +3,18 @@
 Parar container
 docker stop [nome-container]
 
+docker stop librarydb
+
+docker stop pgadmin4
+
 ------------------------------------------------------------------------------------------------------------------------
 
 Remover container
 docker container rm [nome-container]
+
+docker container rm librarydb
+
+docker container rm pgadmin4
 
 ------------------------------------------------------------------------------------------------------------------------
 
