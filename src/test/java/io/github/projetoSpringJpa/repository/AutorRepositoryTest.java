@@ -108,7 +108,19 @@ public class AutorRepositoryTest {
         autor.getLivros().add(livro2);
 
         autorRepository.save(autor);
+
 //        livroRepository.saveAll(autor.getLivros());
 
+    }
+
+    @Test
+    public void listarLivrosAutorTest() {
+        var id = UUID.fromString("cf7de516-006c-47f8-8395-4e843c233639");
+        var autor = autorRepository.findById(id).get();
+
+        List<Livro> listaLivros = livroRepository.findByAutor(autor);
+        autor.setLivros(listaLivros);
+
+        autor.getLivros().forEach(System.out::println);
     }
 }
